@@ -38,7 +38,7 @@ Similarly, we create a file `croeseid_config.json` for the second network
 # croeseid_config.json
 {
   "chain-id": "testnet-croeseid-4",
-  "rpc-addr": "https://testnet-croeseid-4.crypto.org:26657/",
+  "rpc-addr": "http://127.0.0.1:26652",
   "account-prefix": "tcro",
   "gas-adjustment": 1.5,
   "gas-prices": "0.025basetcro",   
@@ -138,7 +138,7 @@ rly tx link transfer -d
 until you see the output of the command:
 
 ```bash
-I[2021-09-06|19:36:28.725] ★ Channel created: [kichain-t-4]chan{channel-52}port{transfer} -> [testnet-croeseid-4]chan{channel-22}port{transfer}
+I[2021-09-06|19:36:28.725] ★ Channel created: [kichain-t-4]chan{channel-79}port{transfer} -> [testnet-croeseid-4]chan{channel-35}port{transfer}
 ```
 After that, the network data will appear in the configuration file(`nano /root/.relayer/config/config.yaml`), for example, like mine
 ```bash
@@ -146,17 +146,17 @@ paths:
   transfer:
     src:
       chain-id: kichain-t-4
-      client-id: 07-tendermint-7
-      connection-id: connection-9
-      channel-id: channel-52
+      client-id: 07-tendermint-11
+      connection-id: connection-56
+      channel-id: channel-79
       port-id: transfer
       order: UNORDERED
       version: ics20-1
     dst:
       chain-id: testnet-croeseid-4
-      client-id: 07-tendermint-35
-      connection-id: connection-24
-      channel-id: channel-22
+      client-id: 07-tendermint-65
+      connection-id: connection-40
+      channel-id: channel-35
       port-id: transfer
       order: UNORDERED
       version: ics20-1
@@ -192,10 +192,10 @@ rly tx transfer kichain-t-4 testnet-croeseid-4 1200utki tcro1emr3cgpw9lpgr9cc99c
 The output should be like this
 
 ```bash
-I[2021-09-06|19:38:14.868] ✔ [kichain-t-4]@{220332} - msg(0:transfer) hash(2058CA05CF81A7ED8FEC42DF6495E89789CB5FD4D1ECAFFE1EF14453138D5690)
+I[2021-09-06|19:38:14.868] ✔ [kichain-t-4]@{220332} - msg(0:transfer) hash(549AB3EDB72AD77B0980FD43D39C4647A90775614D090A546FDCAB07AD1C9C23)
 ```
 
-[https://ki.thecodes.dev/tx/2058CA05CF81A7ED8FEC42DF6495E89789CB5FD4D1ECAFFE1EF14453138D5690](https://ki.thecodes.dev/tx/2058CA05CF81A7ED8FEC42DF6495E89789CB5FD4D1ECAFFE1EF14453138D5690)
+[https://ki.thecodes.dev/tx/549AB3EDB72AD77B0980FD43D39C4647A90775614D090A546FDCAB07AD1C9C23](https://ki.thecodes.dev/tx/549AB3EDB72AD77B0980FD43D39C4647A90775614D090A546FDCAB07AD1C9C23)
 
 2. To send the transaction from croeseid to kichain
 
@@ -204,10 +204,10 @@ rly tx transfer testnet-croeseid-4 kichain-t-4 1000000basetcro tki1f602k2vlf3y8e
 ```
 
 ```bash
-I[2021-09-06|19:39:08.612] ✔ [testnet-croeseid-4]@{300421} - msg(0:transfer) hash(9325C35D365324310E8EE3C071D173E8B233BC3577444A613F9554F0DA858AE2)
+I[2021-09-06|19:39:08.612] ✔ [testnet-croeseid-4]@{300421} - msg(0:transfer) hash(24A4B55125DAFE37DB1462DA30957DDB9196C9D4215583DC529F2ED0172AFF47)
 ```
 
-[https://crypto.org/explorer/croeseid4/tx/9325C35D365324310E8EE3C071D173E8B233BC3577444A613F9554F0DA858AE2](https://crypto.org/explorer/croeseid4/tx/9325C35D365324310E8EE3C071D173E8B233BC3577444A613F9554F0DA858AE2)
+[https://crypto.org/explorer/croeseid4/tx/24A4B55125DAFE37DB1462DA30957DDB9196C9D4215583DC529F2ED0172AFF47](https://crypto.org/explorer/croeseid4/tx/24A4B55125DAFE37DB1462DA30957DDB9196C9D4215583DC529F2ED0172AFF47)
 
 # **C) Create relayr client**
 Create the service file 
@@ -235,5 +235,5 @@ sudo systemctl daemon-reload && sudo systemctl enable rlyd && sudo systemctl sta
 Knowing the parameters of the channel, you can send cross-network transactions
 
 ```bash
-kid tx ibc-transfer transfer transfer channel-52 <tcro_wallet> 1200utki --from <ki_wallet_name>--fees=5000utki --gas=auto --chain-id kichain-t-4 --home $HOME/kichain/kid
+kid tx ibc-transfer transfer transfer channel-76 <tcro_wallet> 1200utki --from <ki_wallet_name>--fees=5000utki --gas=auto --chain-id kichain-t-4 --home $HOME/kichain/kid
 ```
