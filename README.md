@@ -235,5 +235,5 @@ sudo systemctl daemon-reload && sudo systemctl enable rlyd && sudo systemctl sta
 Knowing the parameters of the channel, you can send cross-network transactions
 
 ```bash
-kid tx ibc-transfer transfer transfer channel-76 <tcro_wallet> 1200utki --from <ki_wallet_name>--fees=5000utki --gas=auto --chain-id kichain-t-4 --home $HOME/kichain/kid
+kid tx ibc-transfer transfer transfer channel-79 <tcro_wallet> 1000utki --from <ki_wallet_name>--fees=5000utki --gas=auto --chain-id kichain-t-4 --home $HOME/kichain/kid
 ```
