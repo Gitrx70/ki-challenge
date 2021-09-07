@@ -76,7 +76,7 @@ rly chains edit testnet-croeseid-4 key <tcro_wallet_name>
 
 6) Both relayer accounts, need to funded with tokens in order to successfully sign and relay transactions between the IBC-connected networks. How this occurs depends on the network, context and environment, e.g. local or test networks can use a faucet.
 
-Fouset for croeseid https://crypto.org/faucet
+Foucet for croeseid https://crypto.org/faucet
 
 7) Ensure both relayer accounts are funded by querying each.
 
